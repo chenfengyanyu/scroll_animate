@@ -2,8 +2,48 @@ doctype html
 html
 	head
 		meta(charset='utf-8')
-		link(rel='stylesheet', href='/assets/css/main.css')
+		link(rel='stylesheet', href='assets/css/main.css')
 	body
-		section
-		script(src='/assets/js/ScrollMagic.js')
+		section#box
+			#trigger1
+			#p0
+				img(src='assets/img/p0.jpg',width='500',height='370')
+			#p1
+				img(src='assets/img/p1.png',width='200',height='21')
+			#p2
+				img(src='assets/img/p2.png',width='200',height='34')
+			#p3
+				img(src='assets/img/p3.png',width='108',height='108')
+			#p4
+				img(src='assets/img/p4.png',width='138',height='65')
+			#p5
+				img(src='assets/img/p5.png',width='325',height='34')
+			#p6
+				img(src='assets/img/p6.png',width='94',height='192')
+			#p7
+				img(src='assets/img/p7.png',width='132',height='275')
+		script(src='assets/js/jquery.min.js')
+		script(src='assets/js/ScrollMagic.js')
+		script(src='assets/js/TweenMax.min.js')
+		script(src='assets/js/animation.gsap.min.js')
+		script(src='assets/js/plugins/debug.addIndicators.js')
+		script.
+			$(function(){
+				//- $('#box').css({height:window.innerHeight,marginTop:window.innerHeight/2});
+				$('#box').css({height:window.innerHeight});
+
+				var controller = new ScrollMagic.Controller();
+				var tween = TweenMax.fromTo("#p1", 1,{top:-300,left: 570, rotation: 240},{top:580,left: 315,rotation: 0,ease: Linear.easeNone});
+				new ScrollMagic.Scene({triggerElement: "#p0",duration: 250,offset:-300,triggerHook:'onLeave'})
+					.setPin('#p0',{pushFollowers: true})
+					.addIndicators({name: '1 (box: 250)'})
+					.addTo(controller);
+				new ScrollMagic.Scene({triggerElement: "#trigger1",duration: 200,offset:0,triggerHook:'onLeave'})
+					.setTween(tween)
+					.setPin('#p1',{pushFollowers: true})
+					.addIndicators({name: '1 (p1: 200)'})
+					.addTo(controller);
+			})
+			
+
 

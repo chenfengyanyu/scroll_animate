@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 10000px;
+  background-color: yellowgreen; }
+
+#box {
+  background-color: #181818;
+  position: relative; }
+  #box #p0 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -185px 0 0 -250px;
+    width: 500px; }
+  #box #p1 {
+    position: absolute; }
